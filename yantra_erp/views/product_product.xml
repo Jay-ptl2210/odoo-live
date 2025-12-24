@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_product_form_inherit_yantra"
+            model="ir.ui.view">
+        <field name="name">product.product.form.inherit.yantra</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet" position="inside">
+                <group string="Machine Specifications" col="3">
+
+                    <!-- TECHNICAL SPECIFICATIONS -->
+                    <group string="Technical Specifications">
+                        <field name="height_id"/>
+                        <field name="width_id"/>
+                        <field name="length_id"/>
+                        <field name="drill_dia_id"/>
+                        <field name="plate_thickness_id"/>
+                        <field name="spindle_type_id"/>
+                        <field name="spindle_motor_power_id"/>
+                        <field name="spindle_rpm_id"/>
+                        <field name="machine_structure_id"/>
+                        <field name="prefered_operation_id"/>
+                    </group>
+
+                    <!-- OTHER SPECIFICATIONS (MANUAL ENTRY) -->
+                    <group string="Other Specifications">
+                        <field name="cnc_controller"/>
+                        <field name="positional_accuracy"/>
+                        <field name="spindle_motor"/>
+                        <field name="driving_motor"/>
+                        <field name="machine_category"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

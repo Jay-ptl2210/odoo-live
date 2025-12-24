@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_form_inherit_spindle_report_button" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.spindle.report.button</field>
+        <field name="model">product.template</field>
+
+        <!-- IMPORTANT: correct parent view -->
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+
+        <field name="arch" type="xml">
+
+            <!-- ✅ SAFE LOCATION: oe_button_box -->
+            <xpath expr="//div[contains(@class,'oe_button_box')]" position="inside">
+                <button
+                    name="action_send_today_spindle_report"
+                    type="object"
+                    string="Send Spindle Report"
+                    class="oe_stat_button"
+                    icon="fa-envelope"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

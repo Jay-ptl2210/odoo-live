@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_template_search_inherit_yantra_all" model="ir.ui.view">
+        <field name="name">product.template.search.inherit.yantra.all</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+
+            <!-- ADD FILTERS SAFELY INSIDE SEARCH -->
+            <xpath expr="//search" position="inside">
+
+                <!-- ========================= -->
+                <!-- BASIC -->
+                <!-- ========================= -->
+                <filter name="has_category"
+                        string="Has Category"
+                        domain="[('categ_id','!=',False)]"/>
+
+                <!-- ========================= -->
+                <!-- MEASUREMENTS -->
+                <!-- ========================= -->
+                <filter name="has_height"
+                        string="Height Set"
+                        domain="[('height_id','!=',False)]"/>
+
+                <filter name="has_width"
+                        string="Width Set"
+                        domain="[('width_id','!=',False)]"/>
+
+                <filter name="has_length"
+                        string="Length Set"
+                        domain="[('length_id','!=',False)]"/>
+
+                <filter name="has_drill_dia"
+                        string="Drill Dia Set"
+                        domain="[('drill_dia_id','!=',False)]"/>
+
+                <filter name="has_plate_thickness"
+                        string="Plate Thickness Set"
+                        domain="[('plate_thickness_id','!=',False)]"/>
+
+                <!-- ========================= -->
+                <!-- SPINDLE -->
+                <!-- ========================= -->
+                <filter name="has_spindle_type"
+                        string="Spindle Type Set"
+                        domain="[('spindle_type_id','!=',False)]"/>
+
+                <filter name="has_spindle_motor_power"
+                        string="Spindle Motor Power Set"
+                        domain="[('spindle_motor_power_id','!=',False)]"/>
+
+                <filter name="has_spindle_rpm"
+                        string="Spindle RPM Set"
+                        domain="[('spindle_rpm_id','!=',False)]"/>
+
+                <!-- ========================= -->
+                <!-- MACHINE -->
+                <!-- ========================= -->
+                <filter name="has_machine_structure"
+                        string="Machine Structure Set"
+                        domain="[('machine_structure_id','!=',False)]"/>
+
+                <filter name="has_prefered_operation"
+                        string="Preferred Operation Set"
+                        domain="[('prefered_operation_id','!=',False)]"/>
+
+                <!-- ========================= -->
+                <!-- OTHER SPECIFICATIONS -->
+                <!-- ========================= -->
+                <filter name="has_cnc_controller"
+                        string="CNC Controller Set"
+                        domain="[('cnc_controller','!=',False)]"/>
+
+                <filter name="has_positional_accuracy"
+                        string="Positional Accuracy Set"
+                        domain="[('positional_accuracy','!=',False)]"/>
+
+                <filter name="has_spindle_motor"
+                        string="Spindle Motor Set"
+                        domain="[('spindle_motor','!=',False)]"/>
+
+                <filter name="has_driving_motor"
+                        string="Driving Motor Set"
+                        domain="[('driving_motor','!=',False)]"/>
+
+                <filter name="has_machine_category"
+                        string="Machine Category Set"
+                        domain="[('machine_category','!=',False)]"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

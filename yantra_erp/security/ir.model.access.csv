@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_yantra_measurement,access.yantra.measurement,model_yantra_measurement,base.group_user,1,1,1,1
+access_yantra_spindle_type,access.yantra.spindle.type,model_yantra_spindle_type,base.group_user,1,1,1,1
+access_yantra_spindle_motor_power,access.yantra.spindle.motor.power,model_yantra_spindle_motor_power,base.group_user,1,1,1,1
+access_yantra_spindle_rpm,access.yantra.spindle.rpm,model_yantra_spindle_rpm,base.group_user,1,1,1,1
+access_yantra_machine_structure,access.yantra.machine.structure,model_yantra_machine_structure,base.group_user,1,1,1,1
+access_yantra_prefered_operation,access.yantra.prefered.operation,model_yantra_prefered_operation,base.group_user,1,1,1,1

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_sale_quotation"
+              inherit_id="sale.report_saleorder_document">
+
+        <xpath expr="/t" position="replace">
+            <t t-call="web.basic_layout">
+
+                <!-- ================= HEADER ================= -->
+                <div class="header">
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-3">
+                            <img src="/om_hospital/static/src/img/make_in_india.png"
+                                 style="max-height:60px;"/>
+                        </div>
+
+                        <div class="col-6 text-center">
+                            <h2 style="margin:0;">Yantra Design Pvt. Ltd.</h2>
+                            <div style="font-size:12px;">
+                                Manufacturer of CNC Machining Centres
+                            </div>
+                        </div>
+
+
+                        <div class="payment">
+                            <h1>
+                                Hello 
+                            </h1>
+                        </div>
+
+                        <div class="col-3 text-right">
+                            <img src="/om_hospital/static/src/img/image.png"
+                                 style="max-height:60px;"/>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+
+                <!-- ================= PAGE 1 : COVER ================= -->
+                <div class="page">
+
+                    <h2 class="text-center">QUOTATION</h2>
+
+                    <table class="no-border" style="width:100%;">
+                        <tr>
+                            <td>
+                                <strong>Quotation No:</strong>
+                                <t t-esc="doc.name"/><br/>
+                                <strong>Date:</strong>
+                                <t t-esc="doc.date_order"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <p>
+                        <strong>To,</strong><br/>
+                        <t t-esc="doc.partner_id.name"/><br/>
+                        <t t-esc="doc.partner_id.city"/>
+                        <t t-if="doc.partner_id.state_id">
+                            , <t t-esc="doc.partner_id.state_id.name"/>
+                        </t>
+                    </p>
+
+                    <p>
+                        Subject: Offer for
+                        <strong>
+                            <t t-esc="doc.order_line and doc.order_line[0].product_id.name"/>
+                        </strong>
+                    </p>
+
+                    <p>
+                        Dear Sir,<br/><br/>
+                        As per our discussion, we are pleased to submit our quotation
+                        along with technical specifications, commercial terms, and pricing.
+                    </p>
+
+                </div>
+
+                <!-- ================= PAGE 2 : PRICE ================= -->
+                <div class="page page-break">
+
+                    <h3>PRICE DETAILS</h3>
+
+                    <table style="width:100%; border-collapse:collapse;">
+                        <thead>
+                            <tr>
+                                <th style="border:1px solid #000;">No</th>
+                                <th style="border:1px solid #000;">Description</th>
+                                <th style="border:1px solid #000;">Qty</th>
+                                <th style="border:1px solid #000;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.order_line" t-as="line">
+                                <tr>
+                                    <td style="border:1px solid #000;">
+                                        <t t-esc="line.sequence"/>
+                                    </td>
+                                    <td style="border:1px solid #000;">
+                                        <t t-esc="line.name"/>
+                                    </td>
+                                    <td style="border:1px solid #000; text-align:right;">
+                                        <t t-esc="line.product_uom_qty"/>
+                                    </td>
+                                    <td style="border:1px solid #000; text-align:right;">
+                                        <t t-esc="line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <p style="text-align:right; margin-top:10px;">
+                        <strong>Total Amount:</strong>
+                        <t t-esc="doc.amount_total"/>
+                    </p>
+
+                </div>
+
+                <!-- ================= PAGE 3 : TECHNICAL SPEC ================= -->
+                <div class="page page-break">
+
+                    <h3>TECHNICAL SPECIFICATIONS</h3>
+
+                    <t t-set="product"
+                       t-value="doc.order_line and doc.order_line[0].product_id"/>
+
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr><th style="border:1px solid #000;">Height</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.height_id.value_mm"/>
+                            </td></tr>
+        
+                        <tr><th style="border:1px solid #000;">Width</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.width_id.value_mm"/>
+                            </td></tr>
+
+                        <tr><th style="border:1px solid #000;">Length</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.length_id.value_mm"/>
+                            </td></tr>
+
+                        <tr><th style="border:1px solid #000;">Spindle Type</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.spindle_type_id.display_name"/>
+                            </td></tr>
+
+                        <tr><th style="border:1px solid #000;">Spindle RPM</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.spindle_rpm_id.display_name"/>
+                            </td></tr>
+
+                        <tr><th style="border:1px solid #000;">Machine Structure</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.machine_structure_id.display_name"/>
+                            </td></tr>
+                                            
+                        <tr><th style="border:1px solid #000;">CNC Controller</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.cnc_controller"/>
+                            </td></tr>
+
+                        <tr><th style="border:1px solid #000;">Machine Category</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.machine_category"/>
+                            </td></tr>
+                    </table>
+
+                </div>
+
+                <!-- ================= PAGE 4 : TERMS ================= -->
+                <div class="page page-break">
+
+                    <h3>WARRANTY &amp; COMMERCIAL TERMS</h3>
+
+                    <ol>
+                        <li>Warranty: 12 months from date of delivery.</li>
+                        <li>Payment Terms: 50% advance, balance before dispatch.</li>
+                        <li>Taxes: GST as applicable.</li>
+                        <li>Delivery: 90 days from confirmed PO.</li>
+                    </ol>
+
+                    <p>
+                        Sincerely,<br/>
+                        <strong>Yantra Design Pvt. Ltd.</strong>
+                    </p>
+
+                </div>
+
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
