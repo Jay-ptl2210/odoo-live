@@ -8,3 +8,4 @@ from . import product_template
 from . import product_product
 from . import other_specification
 from . import product_created_spindle_report
+from . import crm_lead

@@ -21,18 +21,6 @@
                                 Manufacturer of CNC Machining Centres
                             </div>
                         </div>
-
-
-                        <div class="payment">
-                            <h1>
-                                Hello 
-                            </h1>
-                        </div>
-
-                        <div class="col-3 text-right">
-                            <img src="/om_hospital/static/src/img/image.png"
-                                 style="max-height:60px;"/>
-                        </div>
                     </div>
                     <hr/>
                 </div>
@@ -79,7 +67,7 @@
 
                 </div>
 
-                <!-- ================= PAGE 2 : PRICE ================= -->
+                <!-- ================= PAGE 2 : PRICE DETAILS ================= -->
                 <div class="page page-break">
 
                     <h3>PRICE DETAILS</h3>
@@ -120,54 +108,73 @@
 
                 </div>
 
-                <!-- ================= PAGE 3 : TECHNICAL SPEC ================= -->
+                <!-- ================= PAGE 3 : TECHNICAL SPECIFICATIONS ================= -->
                 <div class="page page-break">
 
                     <h3>TECHNICAL SPECIFICATIONS</h3>
 
+                    <!-- IMPORTANT: Use product.template -->
                     <t t-set="product"
-                       t-value="doc.order_line and doc.order_line[0].product_id"/>
+                       t-value="doc.order_line and doc.order_line[0].product_id.product_tmpl_id"/>
 
                     <table style="width:100%; border-collapse:collapse;">
-                        <tr><th style="border:1px solid #000;">Height</th>
-                            <td style="border:1px solid #000;">
-                                <t t-esc="product.height_id.value_mm"/>
-                            </td></tr>
-        
-                        <tr><th style="border:1px solid #000;">Width</th>
-                            <td style="border:1px solid #000;">
-                                <t t-esc="product.width_id.value_mm"/>
-                            </td></tr>
 
-                        <tr><th style="border:1px solid #000;">Length</th>
+                        <tr>
+                            <th style="border:1px solid #000;">Height</th>
                             <td style="border:1px solid #000;">
-                                <t t-esc="product.length_id.value_mm"/>
-                            </td></tr>
+                                <t t-esc="product.height_id.value_mm if product and product.height_id else ''"/>
+                            </td>
+                        </tr>
 
-                        <tr><th style="border:1px solid #000;">Spindle Type</th>
+                        <tr>
+                            <th style="border:1px solid #000;">Width</th>
                             <td style="border:1px solid #000;">
-                                <t t-esc="product.spindle_type_id.display_name"/>
-                            </td></tr>
+                                <t t-esc="product.width_id.value_mm if product and product.width_id else ''"/>
+                            </td>
+                        </tr>
 
-                        <tr><th style="border:1px solid #000;">Spindle RPM</th>
+                        <tr>
+                            <th style="border:1px solid #000;">Length</th>
                             <td style="border:1px solid #000;">
-                                <t t-esc="product.spindle_rpm_id.display_name"/>
-                            </td></tr>
+                                <t t-esc="product.length_id.value_mm if product and product.length_id else ''"/>
+                            </td>
+                        </tr>
 
-                        <tr><th style="border:1px solid #000;">Machine Structure</th>
+                        <tr>
+                            <th style="border:1px solid #000;">Spindle Type</th>
                             <td style="border:1px solid #000;">
-                                <t t-esc="product.machine_structure_id.display_name"/>
-                            </td></tr>
-                                            
-                        <tr><th style="border:1px solid #000;">CNC Controller</th>
-                            <td style="border:1px solid #000;">
-                                <t t-esc="product.cnc_controller"/>
-                            </td></tr>
+                                <t t-esc="product.spindle_type_id.display_name if product and product.spindle_type_id else ''"/>
+                            </td>
+                        </tr>
 
-                        <tr><th style="border:1px solid #000;">Machine Category</th>
+                        <tr>
+                            <th style="border:1px solid #000;">Spindle RPM</th>
                             <td style="border:1px solid #000;">
-                                <t t-esc="product.machine_category"/>
-                            </td></tr>
+                                <t t-esc="product.spindle_rpm_id.display_name if product and product.spindle_rpm_id else ''"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="border:1px solid #000;">Machine Structure</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.machine_structure_id.display_name if product and product.machine_structure_id else ''"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="border:1px solid #000;">CNC Controller</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.cnc_controller if product else ''"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th style="border:1px solid #000;">Machine Category</th>
+                            <td style="border:1px solid #000;">
+                                <t t-esc="product.machine_category if product else ''"/>
+                            </td>
+                        </tr>
+
                     </table>
 
                 </div>

@@ -3,7 +3,7 @@
     "author": "Jay",
     "category": "Custom",
     "summary": "Basic Yantra ERP",
-    "depends": ["base","mail","product","sale"],
+    "depends": ["base","mail","product","sale","crm"],
     "data":[
         'security/ir.model.access.csv',
         'views/product_template_view.xml',
